@@ -10,16 +10,16 @@ main()
 	int rdlen = 0, iter = 0;
 	while((rdlen = fread(buf,sizeof(unsigned char),16,stdin)) > 0)
 	{
-		flen += 16;
-		printf("%8.8lX: ",flen);
+		printf("%8.8lx: ",flen);
 		for(iter = 0;iter < rdlen;iter++)
 		{
-			printf("%2.2X ",buf[iter]);
+			printf("%2.2x ",buf[iter]);
 			if(buf[iter] < 33 || buf[iter] > 126)
 				buf[iter] = '.';
 		}	
 		for(iter = 0;iter < rdlen;iter++)
 			printf("%c",buf[iter]);
 		printf("\n");	
+		flen += 16;
 	}
 }
