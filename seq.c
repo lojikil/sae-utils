@@ -1,3 +1,8 @@
+/* quick & dirty implementation of seq(1) for systems that don't have
+ * a native one. 
+ * copyright 2011 Stefan Edwards under the zlib/png license
+ * see the LICENSE file for details
+ */
 #include <stdio.h>
 int
 main(int ac, char **al)
