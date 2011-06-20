@@ -1,0 +1,83 @@
+/* an implementation of Gutmann's overwrite
+ * for "securely" removing a file.
+ * Copyright 2011 Stefan Edwards under the zlib/png license
+ * please see the LICENSE file for details
+ */
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
+#define nil NULL
+#define nul '\0'
+
+const unsigned char bytepats[][] = {
+ {0x55,0x55,0x55},
+ {0xAA,0xAA,0xAA},
+ {0x92,0x49,0x24},
+ {0x49,0x24,0x92},
+ {0x00,0x00,0x00},
+ {0x11,0x11,0x11},
+ {0x22,0x22,0x22},
+ {0x33,0x33,0x33},
+ {0x44,0x44,0x44},
+ {0x55,0x55,0x55},
+ {0x66,0x66,0x66},
+ {0x77,0x77,0x77},
+ {0x88,0x88,0x88},
+ {0x99,0x99,0x99},
+ {0xAA,0xAA,0xAA},
+ {0xBB,0xBB,0xBB},
+ {0xCC,0xCC,0xCC},
+ {0xDD,0xDD,0xDD},
+ {0xEE,0xEE,0xEE},
+ {0xFF,0xFF,0xFF},
+ {0x92,0x49,0x24},
+ {0x49,0x24,0x92},
+ {0x24,0x92,0x49},
+ {0x6D,0xB6,0xDB},
+ {0xB6,0xDB,0x6D},
+ {0xDB,0x6D,0xB6},
+};
+
+int
+main(int ac, char **al)
+{
+	int iter = 0,fd = 0;
+	struct stat fdst;
+	/* Gutmann the name too; need
+	 * to rename the file with the Gutmann
+	 * method to remove even the file name.
+	 * what about Journal, Write cache,
+	 * &c.?
+	 */
+	if(ac < 2)
+	{
+		printf("Usage: nuke file\n");
+		return 1;
+	}
+	if((fd = open(al[1],O_WRONLY)) < 0)
+	{
+		printf("Error! Cannot open %s\n",al[1]);
+		return 2;
+	}
+	fstat(fd,fdst);
+	/* calc total writes */
+	for(;iter < 35;iter++)
+	{
+		if(iter < 5 || iter > 29)
+		{
+			/* gen a random, write it to the
+			 * file len times
+			 */
+		}
+		else
+		{
+			/* write bytepat[iter - 5] to the
+			 * file len/3 times
+			 */
+		}
+	}
+	close(fd);
+	unlink(al[1]);
+	return 0;
+}
