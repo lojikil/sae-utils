@@ -12,3 +12,4 @@
 - rc4.c: quick & dirty implementation of the RC4 algorithm
 - dumptar.c: dump metadata from a tar file to standard out
 - nuke.c: gutmann&apos;s secure removal algorithm
+- mungpdf.py: using ReportLab Toolkit & PIL, mung all JPGs in cwd into one PDF
