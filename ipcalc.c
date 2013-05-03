@@ -15,7 +15,7 @@ int
 main(int ac, char **al)
 {
 	char *buf = nil, *mask = nil, *sep = nil, *obuf = nil, *omask = nil;
-	int address = 0, netmask = 0, offset = 0, data[] = {3,2,1,0}, wildcard = 0, iter = 0;
+	int address = 0, netmask = 0, offset = 3, wildcard = 0, iter = 0;
 	buf = (char *)malloc(sizeof(char) * 17);
 	obuf = buf;
 	if(ac != 3)
@@ -46,8 +46,8 @@ main(int ac, char **al)
 	while(buf != nil)
 	{
 		sep = strsep(&buf,".");
-		address += atoi(sep) << (data[offset] * 8);
-		offset++;
+		address += atoi(sep) << (offset * 8);
+		offset--;
 	}
 	printf("%x/%d:\n",address,netmask);
 	for(;iter < (32 - netmask);iter++)
