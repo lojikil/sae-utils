@@ -11,9 +11,12 @@ main()
 	while((rdlen = fread(buf,sizeof(unsigned char),16,stdin)) > 0)
 	{
 		printf("%8.8lx: ",flen);
-		for(iter = 0;iter < rdlen;iter++)
+		for(iter = 0;iter < 16;iter++)
 		{
-			printf("%2.2x ",buf[iter]);
+		    if(iter > rdlen)
+                printf("   ");
+            else
+                printf("%2.2x ",buf[iter]);
 			if(buf[iter] < 33 || buf[iter] > 126)
 				buf[iter] = '.';
 		}	
