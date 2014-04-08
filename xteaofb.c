@@ -130,7 +130,7 @@ main(int ac, char **al)
         {
                 encipher(res,key);        
                 //printf("%%DEBUG-main-res: %x,%x\n",res[0],res[1]);
-                if(feof(stdin))
+                if(feof(fdin))
                 	break; 
                 fread(inbuf,sizeof(char),8,fdin);
                 outdat[0] = indat[0] ^ res[0];
