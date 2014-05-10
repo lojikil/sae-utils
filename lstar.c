@@ -1,7 +1,6 @@
-/* a simple utility to dump metadata information from a 
- * tar file. Wrote this a long time ago, in admiration
- * for Plan9 :D
- * Copyright 2011 Stefan Edwards under zlib/png license
+/* a simple utility to list the contents of a 
+ * tar file. Definitely based on the Plan9 idea
+ * Copyright 2014 Stefan Edwards under zlib/png license
  * see the LICENSE file for details
  */
 #include <stdio.h>
@@ -40,12 +39,19 @@ main(int ac, char **al){
     }
     while(!feof(fdin)){
         if((fread(buf, sizeof(char), 512, fdin)) < 512){
-            printf("fread failed...\n");
+            if(!feof(fdin)){
+                printf("fread failed...\n");
+            }
             return 3;
         }
 
         if(args_p){ // do we have args? if so, check if the filename is one of them
-
+            for(idx = 2; idx < ac; idx++){
+                // in tar-file format, the length of the file name is 100
+                if(!strncmp(al[idx], buf, 100)){
+                    printf("%s\n", buf);
+                }
+            }
         } else {
             // filename is actually NUL terminated, so we can just print that buffer
             printf("%s\n", buf);
