@@ -57,15 +57,28 @@ main(int ac, char **al){
             printf("%s\n", buf);
         }
 
-        for(idx = 124; idx < 135; idx++){
+        // tar stores file size in packed octal ASCII
+        // unpack it here; field size is 12
+        for(idx = 124; idx < 137; idx++){
             if(buf[idx] < '0' || buf[idx] > '7')
                 break;
             len = (len << 3) + buf[idx] - '0';
         }
+
+        // since tar blocks are of 512 bytes, if
+        // we have anything left over add 1
+        // of course, don't do it willynilly, because
+        // some files are stored with filesize == 0,
+        // like directories
+        if((len % 512) > 0){
+            len /= 512;
+            len += 1;
+        } else {
+            len /= 512;
+        }
+
         // normally, we'd just fseek, but stdin may be processing
         // better to iteratively fread...
-        len /= 512;
-        len += 1;
         for(idx = 0; idx < len; idx++){
             if((fread(buf, sizeof(char), 512, fdin)) < 512){
                 printf("fread failed!\n");
