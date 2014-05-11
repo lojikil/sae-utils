@@ -11,6 +11,8 @@
 - xteaofb.c: use XTea in Output Feedback mode
 - rc4.c: quick & dirty implementation of the RC4 algorithm
 - dumptar.c: dump metadata from a tar file to standard out
+- gettar.c: fetches file contents from a tarfile, in a ISO-C standard way (no POSIX)
+- lstar.c: lists file contents from a tarfile, in a ISO-C standard way (no POSIX)
 - nuke.c: gutmann&apos;s secure removal algorithm
 - mungpdf.py: using ReportLab Toolkit & PIL, mung all JPGs in cwd into one PDF
 - tdc.c: tiny dc clone I wrote *forever* ago
