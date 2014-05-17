@@ -16,11 +16,12 @@ int
 main(int ac, char **al){
     FILE *fdin = nil, *fdout = nil;
     char buf[512] = {0}, size[10] = {0};
-    uint32_t len = 0, idx = 0;
-    uint8_t args_p = 0, print_p = 0;
+    uint32_t len = 0, idx = 0, arg_idx = 0;
+    uint8_t args_p = 0, print_p = 0, stdout_p = 0;
 
     if(ac == 1) {
-        printf("Usage: lstar <tarfile> [<filename> ...]\nif <tarfile> is '-', then read from stdin\n");
+        printf("Usage: gettar <tarfile> [[-]<filename> ...]\nif <tarfile> is '-', then read from stdin\n");
+        printf("prefixing a filename with \"-\" means \"write to standard out\"\n");
         return 1;
     }
     else {
@@ -48,7 +49,10 @@ main(int ac, char **al){
         if(args_p){ // do we have args? if so, check if the filename is one of them
             for(idx = 2; idx < ac; idx++){
                 // in tar-file format, the length of the file name is 100
-                if(!strncmp(al[idx], buf, 100)){
+                if(al[idx][0] == '-' && !strncmp(&al[idx][1], buf, 100)){
+                        stdout_p = 1;
+                        print_p = 1;
+                } else if(!strncmp(al[idx], buf, 100)){
                     print_p = 1;
                 }
             }
@@ -57,7 +61,9 @@ main(int ac, char **al){
         }
 
         if(print_p){
-            if((fdout = fopen(buf, "w")) == nil){
+            if(stdout_p){
+                fdout = stdout;
+            } else if((fdout = fopen(buf, "w")) == nil){
                 perror("fopen, failed!\n");
             }
         }
@@ -95,5 +101,6 @@ main(int ac, char **al){
 
         fclose(fdout);
         print_p = 0;
+        stdout_p = 0;
     }
 }
