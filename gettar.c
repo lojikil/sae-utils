@@ -99,7 +99,9 @@ main(int ac, char **al){
             }
         }
 
-        fclose(fdout);
+        if(print_p && !stdout_p){
+            fclose(fdout);
+        }
         print_p = 0;
         stdout_p = 0;
     }
