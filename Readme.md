@@ -16,3 +16,4 @@
 - nuke.c: gutmann&apos;s secure removal algorithm
 - mungpdf.py: using ReportLab Toolkit & PIL, mung all JPGs in cwd into one PDF
 - tdc.c: tiny dc clone I wrote *forever* ago
+- ms.c: microscopic version of the standard `strings` program.
