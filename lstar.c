@@ -49,12 +49,12 @@ main(int ac, char **al){
             for(idx = 2; idx < ac; idx++){
                 // in tar-file format, the length of the file name is 100
                 if(!strncmp(al[idx], buf, 100)){
-                    printf("%s\n", buf);
+                    printf("a %s\n", buf);
                 }
             }
         } else {
             // filename is actually NUL terminated, so we can just print that buffer
-            printf("%s\n", buf);
+            printf("a %s\n", buf);
         }
 
         // tar stores file size in packed octal ASCII
