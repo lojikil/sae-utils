@@ -24,8 +24,13 @@ main(int ac, char **al) {
         base = atoi(al[3]);
     }
 
-    while(!feof(fdin)) {
+    while(1) {
         fgets(&buffer[0], 128, fdin);
+
+        if(feof(fdin)) {
+            break;
+        }
+
         l = strnlen(buffer, 128);
         // remove the newline
         buffer[l - 1] = nul;
