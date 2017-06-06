@@ -7,13 +7,13 @@ main()
 {
     unsigned long flen = 0;
     unsigned char buf[16] = {0};
-    int rdlen = 0, iter = 0;
+    int rdlen = 16, iter = 0;
     while((rdlen = fread(buf,sizeof(unsigned char),16,stdin)) > 0)
     {
         printf("%8.8lx: ",flen);
         for(iter = 0;iter < 16;iter++)
         {
-            if(iter > rdlen)
+            if(iter >= rdlen)
                 printf("   ");
             else
                 printf("%2.2x ",buf[iter]);
@@ -21,7 +21,6 @@ main()
                 buf[iter] = '.';
         }
         printf(" ");
-        rdlen = rdlen == 16 ? rdlen : rdlen + 1;
         for(iter = 0;iter < rdlen;iter++)
             printf("%c",buf[iter]);
         printf("\n");
