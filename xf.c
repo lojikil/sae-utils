@@ -7,7 +7,7 @@ main()
 {
     unsigned long flen = 0;
     unsigned char buf[16] = {0};
-    int rdlen = 16, iter = 0;
+    int rdlen = 0, iter = 0;
     while((rdlen = fread(buf,sizeof(unsigned char),16,stdin)) > 0)
     {
         printf("%8.8lx: ",flen);
