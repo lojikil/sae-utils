@@ -20,9 +20,11 @@ main()
             if(buf[iter] < 33 || buf[iter] > 126)
                 buf[iter] = '.';
         }
+        printf(" ");
+        rdlen = rdlen == 16 ? rdlen : rdlen + 1;
         for(iter = 0;iter < rdlen;iter++)
             printf("%c",buf[iter]);
-        printf("\n");	
+        printf("\n");
         flen += 16;
     }
 }
