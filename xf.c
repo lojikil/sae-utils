@@ -13,16 +13,17 @@ main()
         printf("%8.8lx: ",flen);
         for(iter = 0;iter < 16;iter++)
         {
-            if(iter > rdlen)
+            if(iter >= rdlen)
                 printf("   ");
             else
                 printf("%2.2x ",buf[iter]);
             if(buf[iter] < 33 || buf[iter] > 126)
                 buf[iter] = '.';
         }
+        printf(" ");
         for(iter = 0;iter < rdlen;iter++)
             printf("%c",buf[iter]);
-        printf("\n");	
+        printf("\n");
         flen += 16;
     }
 }
