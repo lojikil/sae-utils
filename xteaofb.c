@@ -30,7 +30,7 @@ void encipher(uint32_t* v, uint32_t* k)
 {
     uint32_t v0=v[0], v1=v[1], i;
     uint32_t sum=0, delta=0x9E3779B9;
-    for(i=0; i<num_rounds; i++)
+    for(i=0; i < num_rounds; i++)
     {
         v0 += (((v1 << 4) ^ (v1 >> 5)) + v1) ^ (sum + k[sum & 3]);
         sum += delta;
