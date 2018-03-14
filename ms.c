@@ -1,5 +1,16 @@
 #include <stdio.h>
 
+/* a microscopic version of the `strings` program.
+ * iirc, the gruq had posted something on twitter 
+ * regarding the contemporaneous GNU strings 
+ * vulnerability, and had asked for shortest-possible
+ * verisons of replacements that could be run on
+ * potentially-malicious sources. This is one such
+ * attempt: it's not featureful, doesn't really do 
+ * much, but it prints roughly what you would expect
+ * from a strings-alike command.
+ */
+
 int
 main(int ac, char **al){
     FILE *f = NULL;

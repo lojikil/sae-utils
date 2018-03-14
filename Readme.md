@@ -1,4 +1,4 @@
-### sae&apos;s Utils
+# sae&apos;s Utils
 
 - xf.c: simple hex filter
 - ipcalc.c: cidr calculator
@@ -17,3 +17,9 @@
 - mungpdf.py: using ReportLab Toolkit & PIL, mung all JPGs in cwd into one PDF
 - tdc.c: tiny dc clone I wrote *forever* ago
 - ms.c: microscopic version of the standard `strings` program.
+
+# Building
+
+Most of these utilities should be completely standalone, and thus a simple `make` command should
+suffice for any of them. Just use `make [program name]` to compile, e.g. `make tdc` will build
+`tdc.c` into a binary named `tdc`.
