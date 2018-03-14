@@ -1,4 +1,4 @@
-### sae&apos;s Utils###
+### sae&apos;s Utils
 
 - xf.c: simple hex filter
 - ipcalc.c: cidr calculator
