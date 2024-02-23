@@ -2,10 +2,10 @@ import email
 import sys
 
 if len(sys.argv) != 2:
-    print "usage: decode_email [file name]"
+    print("usage: decode_email [file name]")
     sys.exit(0)
 
-with file(sys.argv[1]) as fh:
+with open(sys.argv[1]) as fh:
     msg = email.message_from_file(fh)
 
 for part in msg.walk():
