@@ -19,6 +19,12 @@
 - ms.c: microscopic version of the standard `strings` program.
 - czu.c: a tiny LBR[0] file format dumper
 
+# License
+
+All code is licensed under the zlib/png license.
+
+Normally I use ISC licenses, but I wrote this a long time ago, and so I'm sticking with the same license here.
+
 # Building
 
 Most of these utilities should be completely standalone, and thus a simple `make` command should
