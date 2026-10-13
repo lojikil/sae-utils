@@ -17,9 +17,14 @@
 - mungpdf.py: using ReportLab Toolkit & PIL, mung all JPGs in cwd into one PDF
 - tdc.c: tiny dc clone I wrote *forever* ago
 - ms.c: microscopic version of the standard `strings` program.
+- czu.c: a tiny LBR[0] file format dumper
 
 # Building
 
 Most of these utilities should be completely standalone, and thus a simple `make` command should
 suffice for any of them. Just use `make [program name]` to compile, e.g. `make tdc` will build
 `tdc.c` into a binary named `tdc`.
+
+# Footnotes
+
+- [0]: https://en.wikipedia.org/wiki/LBR_%28file_format%29
